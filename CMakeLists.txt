@@ -1,17 +1,9 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(AW_Pairing VERSION 1.0)
+project(JiTou-Unlock-NextVersion-master VERSION 1.0)
 
-find_package(Qt6 REQUIRED COMPONENTS
-    Core
-    Gui
-    Widgets
-    Network
-    OpenGL
-    Svg
-    Qml
-    Quick
-)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 
 add_subdirectory(FluentUI)
 add_subdirectory(src)
