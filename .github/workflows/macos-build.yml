@@ -1,0 +1,38 @@
+name: Build macOS App
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-macos:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: '6.6.3'
+          target: 'desktop'
+          arch: 'clang_64'
+
+      - name: Setup CMake
+        uses: lukka/get-cmake@latest
+
+      - name: Configure
+        run: |
+          cmake -B build \
+                -DCMAKE_BUILD_TYPE=Release \
+                -DCMAKE_PREFIX_PATH=$Qt6_DIR
+
+      - name: Build
+        run: |
+          cmake --build build --config Release --parallel
+
+      - name: Package (optional)
+        run: |
+          cd build
+          ls -la
