@@ -19,7 +19,7 @@ endif()
 
 
 #导入Qt相关依赖包
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Quick Svg Network Widgets)
+find_package(QT NAMES Qt6 REQUIRED COMPONENTS Quick Svg Network Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Quick Svg Network Widgets)
 
 
