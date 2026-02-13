@@ -15,7 +15,10 @@ jobs:
         run: brew install qt ninja cmake
 
       - name: Configure
-        run: cmake -B build -G Ninja -DCMAKE_PREFIX_PATH=$(brew --prefix qt)
+        run: |
+          cmake -B build -G Ninja \
+          -DCMAKE_PREFIX_PATH=$(brew --prefix qt) \
+          -DQt6_DIR=$(brew --prefix qt)/lib/cmake/Qt6
 
       - name: Build
         run: cmake --build build
